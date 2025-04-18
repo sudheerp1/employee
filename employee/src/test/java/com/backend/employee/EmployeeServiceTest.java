@@ -1,9 +1,11 @@
-package com.backend.employee.service;
+package com.backend.employee;
 
 import com.backend.employee.dto.EmployeeDTO;
 import com.backend.employee.entity.Employee;
 import com.backend.employee.mapper.EmployeeMapper;
 import com.backend.employee.repository.EmployeeRepository;
+import com.backend.employee.service.EmployeeService;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
