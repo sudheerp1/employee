@@ -8,7 +8,19 @@ import com.backend.employee.Enum.Designation;
 import com.backend.employee.Enum.Gender;
 import com.backend.employee.Enum.Salutation;
 
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,48 +32,52 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Employee {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @Column(name = "photo_path")
-    private String photoPath; 
+	@Column(name = "photo_path")
+	private String photoPath;
 
-    @Enumerated(EnumType.STRING)
-    private Salutation salutation;
+	@Enumerated(EnumType.STRING)
+	private Salutation salutation;
 
-    private String firstName;
-    private String middleName;
-    private String lastName;
+	private String firstName;
+	private String middleName;
+	private String lastName;
 
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
+	@Enumerated(EnumType.STRING)
+	private Gender gender;
 
-    private String nationality;
+	private String nationality;
 
-    private LocalDate dob;
+	private LocalDate dob;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "contact_id", referencedColumnName = "id")
-    private Contact contact;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "contact_id", referencedColumnName = "id")
+	private Contact contact;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id", referencedColumnName = "id")
-    private Address address;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "address_id", referencedColumnName = "id")
+	private Address address;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "bank_detail_id", referencedColumnName = "id")
-    private BankDetail bankDetail;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "bank_detail_id", referencedColumnName = "id")
+	private BankDetail bankDetail;
 
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Document> documents;
+	@OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Document> documents;
 
-    private String education;
-    private Integer experience;
+	private String education;
+	private Integer experience;
 
-    @Enumerated(EnumType.STRING)
-    private Designation designation;
+	@Email
+	private String email;
+	private String password;
 
-    @Enumerated(EnumType.STRING)
-    private AccessStatus accessStatus;
+	@Enumerated(EnumType.STRING)
+	private Designation designation;
+
+	@Enumerated(EnumType.STRING)
+	private AccessStatus accessStatus;
 }

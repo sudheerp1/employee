@@ -63,6 +63,12 @@
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
+		<!-- JWT for Authentication -->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.12.6</version>
+        </dependency>
 		   <!-- Mockito for Unit Tests -->
         <dependency>
             <groupId>org.mockito</groupId>
