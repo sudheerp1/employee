@@ -44,7 +44,7 @@ public class SecurityConfig {
 						// Public endpoints that do not require authentication
 						.requestMatchers("/api/auth/**", "/api/user/**").permitAll()
 						// Admin-only access
-						.requestMatchers("/api/admin/**").hasRole("ADMIN")
+						.requestMatchers("/api/admin/**").hasRole("E")
 						// All other requests require authentication
 						.anyRequest().permitAll())
 				.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class); // Add JWT filter

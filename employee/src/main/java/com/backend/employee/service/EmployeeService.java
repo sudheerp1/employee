@@ -6,28 +6,34 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.backend.employee.dto.EmployeeDTO;
+import com.backend.employee.dto.UserDTO;
 import com.backend.employee.entity.Employee;
 import com.backend.employee.mapper.EmployeeMapper;
 import com.backend.employee.repository.EmployeeRepository;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
 public class EmployeeService {
-    private final EmployeeRepository employeeRepo;
-    private final EmployeeMapper mapper;
+	private final EmployeeRepository employeeRepo;
+	private final EmployeeMapper mapper;
 
-    public Employee save(EmployeeDTO dto) {
-        Employee emp = mapper.toEntity(dto);
-        return employeeRepo.save(emp);
-    }
+	@Transactional
+	public Employee save(EmployeeDTO dto) {
+		UserDTO userDto = dto.getUser();
 
-    public List<Employee> getAll() {
-        return employeeRepo.findAll();
-    }
+		Employee emp = mapper.toEntity(dto);
 
-    public Optional<Employee> getById(Long id) {
-        return employeeRepo.findById(id);
-    }
+		return employeeRepo.save(emp);
+	}
+
+	public List<Employee> getAll() {
+		return employeeRepo.findAll();
+	}
+
+	public Optional<Employee> getById(Long id) {
+		return employeeRepo.findById(id);
+	}
 }

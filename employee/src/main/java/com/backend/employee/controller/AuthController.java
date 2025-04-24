@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 
 @Controller
-@RequestMapping("/api/auth/employee/login")
+@RequestMapping("/api/auth//login")
 @RequiredArgsConstructor
 public class AuthController {
 	private final AuthenticationManager authenticationManager;

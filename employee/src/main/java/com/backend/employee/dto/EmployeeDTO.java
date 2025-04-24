@@ -67,6 +67,10 @@ public class EmployeeDTO {
 	@NotNull(message = "Bank details are required")
 	private BankDetailDTO bankDetail;
 
+	@Valid
+	@NotNull(message = "Bank details are required")
+	private UserDTO user;
+
 	private List<@Valid DocumentDTO> documents; // Lombok will generate getter and setter for this
 
 	@Size(max = 255, message = "Education detail must not exceed 255 characters")
