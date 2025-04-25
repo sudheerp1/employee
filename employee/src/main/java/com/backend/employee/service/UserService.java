@@ -1,5 +1,6 @@
 package com.backend.employee.service;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.backend.employee.dto.UserDTO;
@@ -15,8 +16,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class UserService {
 	private final UserRepository userRepo;
+	private final PasswordEncoder encoder;
 
 	public User save(UserDTO userDto) {
+		userDto.setPassword(encoder.encode(userDto.getPassword()));
 		User user = UserMapper.toEntity(userDto);
 		User savedUser = userRepo.save(user);
 		log.info("saving the user with userName " + user.getUserName());
