@@ -16,10 +16,10 @@ import lombok.extern.slf4j.Slf4j;
 public class UserService {
 	private final UserRepository userRepo;
 
-	public UserDTO sav(UserDTO userDto) {
+	public User save(UserDTO userDto) {
 		User user = UserMapper.toEntity(userDto);
 		User savedUser = userRepo.save(user);
 		log.info("saving the user with userName " + user.getUserName());
-		return UserMapper.toDTO(savedUser);
+		return savedUser;
 	}
 }

@@ -26,10 +26,10 @@ public class AuthController {
 	@PostMapping("/login")
 	public ResponseEntity<String> login(@RequestBody LoginRequest request) {
 		Authentication authentication = null;
+
 		try {
 			authentication = authenticationManager.authenticate(
 					new UsernamePasswordAuthenticationToken(request.getUserName(), request.getPassword()));
-
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpServletResponse.SC_UNAUTHORIZED).body("Login failed: " + e.getMessage());
 		}

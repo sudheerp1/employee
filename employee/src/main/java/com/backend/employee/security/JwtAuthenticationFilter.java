@@ -35,7 +35,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 			throws ServletException, IOException {
 
 		// Define a list of public URLs
-		String[] publicUrls = { "/api/auth", "/error" }; // Add your public endpoints here
+		String[] publicUrls = { "/api/auth", "/error", "/api/employees" }; // Add your public endpoints here
 
 		// Get the requested URL
 		String requestUri = request.getRequestURI();
