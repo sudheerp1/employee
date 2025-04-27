@@ -42,7 +42,7 @@ public class SecurityConfig {
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Stateless
 				.authorizeHttpRequests(auth -> auth
 						// Public endpoints that do not require authentication
-						.requestMatchers("/api/auth/**", "/api/user/**").permitAll()
+						.requestMatchers("/api/auth/**", "/api/employees").permitAll()
 						// Admin-only access
 						.requestMatchers("/api/admin/**").hasRole("E")
 						// All other requests require authentication
